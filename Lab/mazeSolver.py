@@ -52,14 +52,10 @@ def get_maze_from_user():
     return maze, start, goal
 
 
-def validate_maze(maze):
-    """Checks if the maze is valid."""
-
+def validate_maze(maze):  #Checks if the maze is valid.
     valid_symbols = {"S", "G", ".", "|"}
-
     start_count = 0
     goal_count = 0
-
     for row in maze:
         for cell in row:
             if cell not in valid_symbols:
@@ -77,8 +73,7 @@ def validate_maze(maze):
         exit()
 
 
-def find_start_and_goal(maze):
-    """Finds the Start and Goal positions."""
+def find_start_and_goal(maze): #Finds the Start and Goal positions.
     start = None
     goal = None
     for row in range(len(maze)):
@@ -89,13 +84,11 @@ def find_start_and_goal(maze):
                 goal = (row, col)
     return start, goal
 
-
 # ==========================================================
 # PART 2 - BFS SEARCH
 # ==========================================================
 
-def get_walkable_neighbors(maze, cell):
-    """Returns all valid neighboring cells."""
+def get_walkable_neighbors(maze, cell): #Returns all valid neighboring cells.
     rows = len(maze)
     cols = len(maze[0])
     row, col = cell
@@ -116,8 +109,7 @@ def get_walkable_neighbors(maze, cell):
     return neighbors
 
 
-def find_shortest_path_bfs(maze, start, goal):
-    """Uses BFS to find the shortest path."""
+def find_shortest_path_bfs(maze, start, goal): #Uses BFS to find the shortest path.
     queue = deque()
     queue.append(start)
     visited = set()
@@ -152,8 +144,7 @@ def build_path(came_from, start, goal):
     path.reverse()
     return path
 
-def print_maze_with_path(maze, path):
-    """Prints the maze with the shortest path."""
+def print_maze_with_path(maze, path): #Prints the maze with the shortest path.
     grid = []
     for row in maze:
         grid.append(list(row))
